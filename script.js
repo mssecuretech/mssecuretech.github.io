@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                const offsetTop = target.offsetTop - navbarHeight - 20; // Account for fixed navbar with extra padding
+                const isMobile = window.innerWidth <= 768;
+                const extraOffset = isMobile ? 60 : 20;
+                const offsetTop = target.offsetTop - navbarHeight - extraOffset;
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
